@@ -137,9 +137,9 @@ which defines the curve.
 
 =cut
 
-sub a {
+sub b {
 	my $self = shift;
-	return $self->{a};
+	return $self->{b};
 }
 
 =method g
