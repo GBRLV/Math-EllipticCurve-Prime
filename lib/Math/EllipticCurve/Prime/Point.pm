@@ -25,6 +25,9 @@ sub new {
 	$args{infinity} ||= 0;
 	delete @args{qw/x y/} if $args{infinity};
 
+	$args{curve} = Math::EllipticCurve::Prime->from_name($args{curve})
+		if $args{curve} && !ref $args{curve};
+
 	my $self = \%args;
 	$class = ref($class) || $class;
 	return bless $self, $class;
