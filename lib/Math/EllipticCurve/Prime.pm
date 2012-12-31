@@ -17,6 +17,14 @@ my $point = $curve->g; # Base point of the curve.
 $point->bdbl; # In-place operation.
 print "(" . $point->x . ", " . $point->y . ")\n";
 
+=head1 DESCRIPTION
+
+This class represents an elliptic curve over a prime field.  These curves are
+commonly used in cryptography.  Consequently, a set of commonly-used curves (and
+aliases for those curves) is provided by name.  The curve itself is generally
+not very interesting; Math::EllipticCurve::Prime::Point will see much more use
+in the typical scenario.
+
 =cut
 
 our %predefined = (
@@ -176,7 +184,7 @@ sub a {
 
 =method b
 
-Returns a Math::BigInt representing b, the constant  and one of the numbers
+Returns a Math::BigInt representing b, the constant and one of the numbers
 which defines the curve.
 
 =cut
