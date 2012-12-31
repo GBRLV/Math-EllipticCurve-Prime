@@ -12,7 +12,10 @@ use Math::EllipticCurve::Prime::Point;
 
 use Math::EllipticCurve::Prime;
 
-my $curve = Math::EllipticCurve::Prime->from_name('P-256');
+my $curve = Math::EllipticCurve::Prime->from_name('secp256r1');
+my $point = $curve->g; # Base point of the curve.
+$point->double; # In-place operation.
+print "(" . $point->x . ", " . $point->y . ")\n";
 
 =cut
 
@@ -39,6 +42,21 @@ our %aliases = (
 	P256 => "secp256r1",
 );
 
+=method new
+
+Creates a new curve.  This function takes a hash of parameters.  The curve can
+either be specified by name (parameter name) using a common name for the curve,
+or the components can be specified individually.
+
+The parameters are p, a prime; a and b, the constants which define the curve; g,
+the base point, which functions as a generator; n, the order of g; and h, the
+cofactor.  The integers can either be specified as hexadecimal strings or
+Math::BigInt instances, and the base point can be specified either as an
+instance of Meth::EllipticCurve::Prime::Point or a string suitable for that
+class's from_hex function.
+
+=cut
+
 sub new {
 	my ($class, %args) = @_;
 
@@ -49,6 +67,12 @@ sub new {
 	bless $self, $class;
 	return $self->init;
 }
+
+=method from_name
+
+Takes a single argument, the name of the curve.
+
+=cut
 
 sub from_name {
 	my ($class, $name) = @_;
@@ -63,26 +87,83 @@ sub from_name {
 sub init {
 	my $self = shift;
 	foreach my $param (qw/p a b n h/) {
-		$self->{$param} = Math::BigInt->new("0x$self->{$param}");
+		$self->{$param} = Math::BigInt->new("0x$self->{$param}")
+			unless ref $self->{$param};
 	}
-	$self->{g} = Math::EllipticCurve::Prime::Point->from_hex($self->{g});
+	$self->{g} = Math::EllipticCurve::Prime::Point->from_hex($self->{g})
+		unless ref $self->{g};
 	$self->{g}->curve($self);
 	return $self;
 }
 
-sub g {
+=method p
+
+Returns a Math::BigInt representing p, the prime.
+
+=cut
+
+sub p {
 	my $self = shift;
-	return $self->{g};
+	return $self->{p};
 }
+
+=method a
+
+Returns a Math::BigInt representing a, the coefficient of x and one of the
+numbers which defines the curve.
+
+=cut
 
 sub a {
 	my $self = shift;
 	return $self->{a};
 }
 
-sub p {
+=method b
+
+Returns a Math::BigInt representing b, the constant  and one of the numbers
+which defines the curve.
+
+=cut
+
+sub a {
 	my $self = shift;
-	return $self->{p};
+	return $self->{a};
 }
+
+=method g
+
+Returns a Math::EllipticCurve::Prime::Point object representing g, the base
+point and generator.
+
+=cut
+
+sub g {
+	my $self = shift;
+	return $self->{g};
+}
+
+=method n
+
+Returns a Math::BigInt object representing n, the order of g.
+
+=cut
+
+sub n {
+	my $self = shift;
+	return $self->{n};
+}
+
+=method h
+
+Returns a Math::BigInt object representing h, the cofactor.
+
+=cut
+
+sub h {
+	my $self = shift;
+	return $self->{h};
+}
+
 
 1;
