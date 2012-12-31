@@ -5,7 +5,7 @@ use FindBin;
 use warnings;
 use strict;
 
-use Test::More tests => 104 + 1;
+use Test::More tests => 520 + 1;
 use Test::NoWarnings;
 
 use Math::BigInt try => 'GMP';
@@ -37,7 +37,7 @@ sub load_tests {
 
 my $tests = load_tests();
 
-foreach my $curvename (keys %$tests) {
+foreach my $curvename (sort keys %$tests) {
 	my $curve = Math::EllipticCurve::Prime->new(name => $curvename);
 	next unless $curve;
 
