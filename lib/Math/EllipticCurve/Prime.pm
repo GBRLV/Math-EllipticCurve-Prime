@@ -76,8 +76,8 @@ Takes a single argument, the name of the curve.
 
 sub from_name {
 	my ($class, $name) = @_;
+	$name = $aliases{$name} if defined $aliases{$name};
 	my $params = $predefined{$name};
-	$params ||= $predefined{$aliases{$name}} if defined $aliases{$name};
 	return unless defined $params;
 	my $self = $class->new(%$params);
 	$self->{name} = $name;
