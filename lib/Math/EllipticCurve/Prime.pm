@@ -96,6 +96,17 @@ sub init {
 	return $self;
 }
 
+=method name
+
+Returns the canonical name of this curve if it was created by name.
+
+=cut
+
+sub name {
+	my $self = shift;
+	return $self->{name};
+}
+
 =method p
 
 Returns a Math::BigInt representing p, the prime.
