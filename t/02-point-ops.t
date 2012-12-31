@@ -18,7 +18,7 @@ use Math::EllipticCurve::Prime::Point;
 	ok(!defined $point->x, "point at infinity has no x coordinate");
 	ok(!defined $point->y, "point at infinity has no y coordinate");
 
-	$point->double;
+	$point->bdbl;
 	ok($point->infinity, "doubled point at infinity is point at infinity");
 	ok(!defined $point->x, "doubled point at infinity has no x coordinate");
 	ok(!defined $point->y, "doubled point at infinity has no y coordinate");
@@ -36,7 +36,7 @@ use Math::EllipticCurve::Prime::Point;
 		"0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5",
 		"initial point y coordinate matches");
 
-	$g->double;
+	$g->bdbl;
 	is($g->x->as_hex,
 		"0x7cf27b188d034f7e8a52380304b51ac3c08969e277f21b35a60b48fc47669978",
 		"doubled point x coordinate matches");

@@ -14,7 +14,7 @@ use Math::EllipticCurve::Prime;
 
 my $curve = Math::EllipticCurve::Prime->from_name('secp256r1');
 my $point = $curve->g; # Base point of the curve.
-$point->double; # In-place operation.
+$point->bdbl; # In-place operation.
 print "(" . $point->x . ", " . $point->y . ")\n";
 
 =cut

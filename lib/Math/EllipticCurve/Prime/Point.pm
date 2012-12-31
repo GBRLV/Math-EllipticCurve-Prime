@@ -118,7 +118,7 @@ sub bmul {
 	$self->_set_infinity;
 
 	for (reverse 0..$bits) {
-		$self->double;
+		$self->bdbl;
 		if ($k->copy->band($mask)) {
 			$self->badd($pt);
 		}
@@ -186,20 +186,22 @@ sub badd {
 		return $self->_set_infinity;
 	}
 	else {
-		return $self->double;
+		return $self->bdbl;
 	}
 }
 
-=method double
+=method bdbl
 
-Doubles the current point.
+Doubles the current point.  Like Math::BigInt, this modifies the present point.
+If you want to preserve this point, use the copy method to create a clone of the
+current point.
 
 Requires that a curve has been set.
 
 =cut
 
 # The algorithm used here is specified in SEC 1, page 7.
-sub double {
+sub bdbl {
 	my $self = shift;
 
 	return $self if $self->infinity;
@@ -215,6 +217,45 @@ sub double {
 	$lambda->bmul($bottom)->bmod($p);
 
 	return $self->_add_points($self->x, $self->x, $self->y, $lambda, $p);
+}
+
+=method multiply
+
+Multiplies this point by a scalar.  Returns a new point object.
+
+Requires that a curve has been set.
+
+=cut
+
+sub multiply {
+	my ($self, $k) = @_;
+	return $self->copy->bmul($k);
+}
+
+=method add
+
+Adds this point to another point.  Returns a new point object.
+
+Requires that a curve has been set.
+
+=cut
+
+sub add {
+	my ($self, $other) = @_;
+	return $self->copy->badd($other);
+}
+
+=method double
+
+Doubles this point.  Returns a new point object.
+
+Requires that a curve has been set.
+
+=cut
+
+sub double {
+	my $self = shift;
+	return $self->copy->bdbl;
 }
 
 =method infinity
