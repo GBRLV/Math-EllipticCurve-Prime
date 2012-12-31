@@ -6,6 +6,7 @@ package Math::EllipticCurve::Prime::Point;
 # ABSTRACT: points for elliptic curve operations over prime fields
 
 use Math::BigInt try => 'GMP';
+use List::Util;
 
 =head1 SYNOPSIS
 
@@ -80,7 +81,7 @@ sub from_hex {
 	return $class->new(x => $x, y => $y);
 }
 
-=method from_hex
+=method from_bytes
 
 This method takes a representation of a point in the SEC format and creates a
 new Math::EllipticCurve::Prime::Point object.  Calls from_hex under the
@@ -90,7 +91,45 @@ hood.
 
 sub from_bytes {
 	my ($class, $bytes) = @_;
-	return $class->from_hex(pack "H*", $bytes);
+	return $class->from_hex(unpack "H*", $bytes);
+}
+
+=method to_hex
+
+This method produces a hexadecimal string representing a point in the
+uncompressed SEC format.
+
+=cut
+
+sub to_hex {
+	my $self = shift;
+
+	return "00" if $self->infinity;
+	my $x = $self->x->as_hex;
+	my $y = $self->y->as_hex;
+	$x =~ s/^0x//;
+	$y =~ s/^0x//;
+	my $length = List::Util::max(length $x, length $y);
+	$length++ if $length & 1;
+
+	my $result = "04";
+	$result .= ("0" x ($length - length $x)) . $x;
+	$result .= ("0" x ($length - length $y)) . $y;
+
+	return $result;
+}
+
+=method to_bytes
+
+This method produces a byte string representing a point in the uncompressed SEC
+format.
+
+=cut
+
+sub to_bytes {
+	my $self = shift;
+
+	return pack "H*", $self->to_hex;
 }
 
 =method copy
