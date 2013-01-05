@@ -1,3 +1,10 @@
+Math-EllipticCurve-Prime (0.002)
+
+  * Require Math::BigInt 1.78, since earlier versions didn't have the try
+    import that we need for decent performance.
+
+ -- brian m. carlson <brianc@cpan.org> UNRELEASED
+
 Math-EllipticCurve-Prime (0.001)
 
   * Initial release.
