@@ -3,12 +3,14 @@
 use warnings;
 use strict;
 
-use Test::More tests => 39 + 1;
+use Test::More;
 use Test::NoWarnings;
 
 use Math::BigInt try => 'GMP';
 use Math::EllipticCurve::Prime;
 use Math::EllipticCurve::Prime::Point;
+
+plan tests => scalar keys(%Math::EllipticCurve::Prime::predefined) * 5 + 4 + 1;
 
 {
 	my $point = Math::EllipticCurve::Prime::Point->new;

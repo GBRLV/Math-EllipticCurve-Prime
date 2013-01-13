@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 21 + 1;
+use Test::More;
 use Test::NoWarnings;
 
 use Math::BigInt try => 'GMP';
@@ -13,6 +13,8 @@ use Math::EllipticCurve::Prime;
 my $dhash = Math::BigInt->new("0x1f40fc92da241694750979ee6cf582f2d5d7d28e18335de05abc54d0560e0f5302860c652bf08d560252aa5e74210546f369fbbbce8c12cfc7957b2652fe9a75");
 my $dk = Math::BigInt->new("0x5267768822ee624d48fce15ec5ca79cbd602cb7f4c2157a516556991f22ef8c7b5ef7b18d1ff41c59370efb0858651d44a936c11b7b144c48fe04df3c6a3e8da");
 my $dprivate = Math::BigInt->new("0xacc28db2beb7b42baa1cb0243d401ccb4e3fce44d7b02879a52799aadff541522d8822598b2fa664f9d5156c00c924805d75c3868bd56c2acb81d37e98e35adc");
+
+plan tests => scalar keys(%Math::EllipticCurve::Prime::predefined) * 3 + 1;
 
 foreach my $name (sort keys %Math::EllipticCurve::Prime::predefined) {
 	my $curve = Math::EllipticCurve::Prime->new(name => $name);
