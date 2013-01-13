@@ -28,6 +28,30 @@ in the typical scenario.
 =cut
 
 our %predefined = (
+	secp112r1 => {
+		p => "db7c2abf62e35e668076bead208b",
+		a => "db7c2abf62e35e668076bead2088",
+		b => "659ef8ba043916eede8911702b22",
+		g => "0409487239995a5ee76b55f9c2f098a89ce5af8724c0a23e0e0ff77500",
+		n => "db7c2abf62e35e7628dfac6561c5",
+		h => "01",
+	},
+	secp160r1 => {
+		p => "ffffffffffffffffffffffffffffffff7fffffff",
+		a => "ffffffffffffffffffffffffffffffff7ffffffc",
+		b => "1c97befc54bd7a8b65acf89f81d4d4adc565fa45",
+		g => "044a96b5688ef573284664698968c38bb913cbfc8223a628553168947d59dcc912042351377ac5fb32",
+		n => "0100000000000000000001f4c8f927aed3ca752257",
+		h => "01",
+	},
+	secp160r2 => {
+		p => "fffffffffffffffffffffffffffffffeffffac73",
+		a => "fffffffffffffffffffffffffffffffeffffac70",
+		b => "b4e134d3fb59eb8bab57274904664d5af50388ba",
+		g => "0452dcb034293a117e1f4ff11b30f7199d3144ce6dfeaffef2e331f296e071fa0df9982cfea7d43f2e",
+		n => "0100000000000000000000351ee786a818f3a1a16b",
+		h => "01",
+	},
 	secp192k1 => {
 		p => "fffffffffffffffffffffffffffffffffffffffeffffee37",
 		a => "00",
