@@ -10,12 +10,12 @@ use Math::EllipticCurve::Prime::Point;
 
 =head1 SYNOPSIS
 
-use Math::EllipticCurve::Prime;
+	use Math::EllipticCurve::Prime;
 
-my $curve = Math::EllipticCurve::Prime->from_name('secp256r1');
-my $point = $curve->g; # Base point of the curve.
-$point->bdbl; # In-place operation.
-print "(" . $point->x . ", " . $point->y . ")\n";
+	my $curve = Math::EllipticCurve::Prime->from_name('secp256r1');
+	my $point = $curve->g; # Base point of the curve.
+	$point->bdbl; # In-place operation.
+	print "(" . $point->x . ", " . $point->y . ")\n";
 
 =head1 DESCRIPTION
 

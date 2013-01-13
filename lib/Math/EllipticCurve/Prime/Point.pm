@@ -10,20 +10,20 @@ use List::Util;
 
 =head1 SYNOPSIS
 
-use Math::EllipticCurve::Prime::Point;
+	use Math::EllipticCurve::Prime::Point;
 
-my $p = Math::EllipticCurve::Prime::Point->new(curve => 'secp256r1',
-	x => Math::BigInt->new('0x01ff'),
-	y => Math::BigInt->new('0x03bc')); # not real points on the curve
-my $p2 = $p->double;
-print "(" . $p2->x . ", " . $p2->y . ")\n";
+	my $p = Math::EllipticCurve::Prime::Point->new(curve => 'secp256r1',
+		x => Math::BigInt->new('0x01ff'),
+		y => Math::BigInt->new('0x03bc')); # not real points on the curve
+	my $p2 = $p->double;
+	print "(" . $p2->x . ", " . $p2->y . ")\n";
 
-# Creates a point at infinity.
-my $p3 = Math::EllipticCurve::Prime::Point->new(curve => 'secp256r1');
+	# Creates a point at infinity.
+	my $p3 = Math::EllipticCurve::Prime::Point->new(curve => 'secp256r1');
 
-# Creates a point from a hexadecimal SEC representation.
-my $p4 = Math::EllipticCurve::Prime::Point->from_hex("0401ff03bc");
-$p4->curve(Math::EllipticCurve::Prime->new(name => 'secp256r1'));
+	# Creates a point from a hexadecimal SEC representation.
+	my $p4 = Math::EllipticCurve::Prime::Point->from_hex("0401ff03bc");
+	$p4->curve(Math::EllipticCurve::Prime->new(name => 'secp256r1'));
 
 =head1 DESCRIPTION
 
