@@ -2,11 +2,13 @@ Math-EllipticCurve-Prime (0.002)
 
   * Require Math::BigInt 1.78, since earlier versions didn't have the try
     import that we need for decent performance.
+  * Fix POD so verbatim sections display properly.
+  * Add the curves secp112r1, secp160r1, and secp160r2.
 
- -- brian m. carlson <brianc@cpan.org> UNRELEASED
+ -- brian m. carlson <brianc@cpan.org> Sun, 13 Jan 2013 23:43:30 +0000
 
 Math-EllipticCurve-Prime (0.001)
 
   * Initial release.
 
- -- brian m. carlson <brianc@cpan.org> Mon Dec 31 21:09:40 2012 +0000
+ -- brian m. carlson <brianc@cpan.org> Mon, 31 Dec 2012 21:09:40 +0000
