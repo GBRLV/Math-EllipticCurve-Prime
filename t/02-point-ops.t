@@ -6,7 +6,7 @@ use strict;
 use Test::More tests => 11 + 1;
 use Test::NoWarnings;
 
-use Math::BigInt try => 'GMP';
+use Math::BigInt try => 'GMP,FastCalc';
 use Math::EllipticCurve::Prime;
 use Math::EllipticCurve::Prime::Point;
 

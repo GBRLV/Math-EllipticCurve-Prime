@@ -6,7 +6,7 @@ use strict;
 use Test::More;
 use Test::NoWarnings;
 
-use Math::BigInt try => 'GMP';
+use Math::BigInt try => 'GMP,FastCalc';
 use Math::EllipticCurve::Prime;
 
 # These are the SHA-512 values of "a", "b", and "c" respectively.
