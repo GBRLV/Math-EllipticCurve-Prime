@@ -252,5 +252,13 @@ sub h {
 	return $self->{h};
 }
 
+=head1 CAVEATS
+
+This module will function just fine with the default Math::BigInt, but it will
+be unusably slow.  If Math::BigInt::FastCalc is available, it will be just
+somewhat slow (679 seconds to run the testsuite).  For reasonable performance,
+Math::BigInt::GMP (25 seconds) is strongly recommended.
+
+=cut
 
 1;
