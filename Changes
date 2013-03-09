@@ -1,3 +1,11 @@
+Math-EllipticCurve-Prime (0.003)
+
+  * Permit the use of Math::BigInt::FastCalc.
+  * Strongly recommend the use of Math::BigInt::GMP, unless you live in a cold
+    climate and your heater is broken.
+
+ -- brian m. carlson <brianc@cpan.org> Sun, 13 Jan 2013 23:43:30 +0000
+
 Math-EllipticCurve-Prime (0.002)
 
   * Require Math::BigInt 1.78, since earlier versions didn't have the try
