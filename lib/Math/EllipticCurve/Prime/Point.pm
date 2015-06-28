@@ -1,9 +1,9 @@
+package Math::EllipticCurve::Prime::Point;
+# ABSTRACT: points for elliptic curve operations over prime fields
+
 use 5.006002;
 use strict;
 use warnings;
-
-package Math::EllipticCurve::Prime::Point;
-# ABSTRACT: points for elliptic curve operations over prime fields
 
 use Math::BigInt 1.78 try => 'GMP,FastCalc';
 use List::Util;
