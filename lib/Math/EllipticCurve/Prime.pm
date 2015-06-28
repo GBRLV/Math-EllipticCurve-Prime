@@ -184,6 +184,7 @@ sub name {
 }
 
 =method p
+=method prime
 
 Returns a Math::BigInt representing p, the prime.
 
@@ -194,7 +195,10 @@ sub p {
 	return $self->{p};
 }
 
+*prime = \&p;
+
 =method a
+=method coefficient
 
 Returns a Math::BigInt representing a, the coefficient of x and one of the
 numbers which defines the curve.
@@ -206,7 +210,10 @@ sub a {
 	return $self->{a};
 }
 
+*coefficient = \&a;
+
 =method b
+=method constant
 
 Returns a Math::BigInt representing b, the constant and one of the numbers
 which defines the curve.
@@ -218,7 +225,11 @@ sub b {
 	return $self->{b};
 }
 
+*constant = \&b;
+
 =method g
+=method generator
+=method base_point
 
 Returns a Math::EllipticCurve::Prime::Point object representing g, the base
 point and generator.
@@ -230,7 +241,11 @@ sub g {
 	return $self->{g};
 }
 
+*generator = \&g;
+*base_point = \&g;
+
 =method n
+=method order
 
 Returns a Math::BigInt object representing n, the order of g.
 
@@ -241,7 +256,10 @@ sub n {
 	return $self->{n};
 }
 
+*order = \&n;
+
 =method h
+=method cofactor
 
 Returns a Math::BigInt object representing h, the cofactor.
 
@@ -251,6 +269,8 @@ sub h {
 	my $self = shift;
 	return $self->{h};
 }
+
+*cofactor = \&h;
 
 =head1 CAVEATS
 
