@@ -24,15 +24,7 @@ foreach my $name (sort keys %Math::EllipticCurve::Prime::predefined) {
 	# Test that the base point is on the curve.  This ensures that the values of
 	# p, a, b, and g are correct.
 	my $g = $curve->g;
-	my $x = $g->x;
-	my $y = $g->y;
-	my $left = $y->copy->bmodpow(2, $curve->p);
-	my $right = $x->copy->bmodpow(3, $curve->p);
-	$right->badd($x->copy->bmul($curve->a));
-	$right->badd($curve->b);
-	$right->bmod($curve->p);
-
-	is($left, $right, "base point for $name is on the curve");
+	ok($g->on_curve, "base point for $name is on the curve");
 
 	# Test that ECDSA signature verification succeeds.  This validates n.
 	my $n = $curve->n;

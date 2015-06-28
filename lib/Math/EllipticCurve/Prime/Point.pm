@@ -372,4 +372,27 @@ sub curve {
 	return $self->{curve};
 }
 
+=method on_curve
+
+Returns true if the point is on the given curve.  If no curve is provided, uses
+the curve set in the point or throws an exception if none is set.
+
+=cut
+
+sub on_curve {
+	my ($self, $curve) = @_;
+
+	$curve = $self->{curve} unless defined $curve;
+	die "No curve provided!" unless defined $curve;
+
+
+	my $p = $curve->p;
+	my $left = $self->y->copy->bmodpow(2, $p);
+	my $right = $self->x->copy->bmodpow(3, $p);
+	my $term2 = $self->x->copy->bmul($curve->a);
+	$right->badd($term2)->badd($curve->b)->bmod($p);
+
+	return !$left->bcmp($right);
+}
+
 1;
