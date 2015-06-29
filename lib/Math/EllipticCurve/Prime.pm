@@ -1,7 +1,7 @@
 package Math::EllipticCurve::Prime;
 # ABSTRACT: elliptic curve operations over prime fields
 
-use 5.006002;
+use 5.008008;
 use strict;
 use warnings;
 
