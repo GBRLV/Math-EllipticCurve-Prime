@@ -10,8 +10,6 @@ use Math::BigInt try => 'GMP,FastCalc';
 use Math::EllipticCurve::Prime;
 use Math::EllipticCurve::Prime::Point;
 
-plan tests => scalar keys(%Math::EllipticCurve::Prime::predefined) * 5 + 4 + 1;
-
 {
 	my $point = Math::EllipticCurve::Prime::Point->new;
 	is($point->to_hex, "00", "hex repr of point at infinity is correct");
@@ -38,3 +36,5 @@ foreach my $curve (sort keys %Math::EllipticCurve::Prime::predefined) {
 	cmp_ok(2 * length $bytes, '==', length $hex,
 		"byte string for $curve has the right length");
 }
+
+done_testing;

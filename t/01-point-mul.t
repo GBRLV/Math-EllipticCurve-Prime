@@ -5,7 +5,7 @@ use FindBin;
 use warnings;
 use strict;
 
-use Test::More tests => 520 + 1;
+use Test::More;
 use Test::Warnings;
 
 use Math::BigInt try => 'GMP,FastCalc';
@@ -52,3 +52,5 @@ foreach my $curvename (sort keys %$tests) {
 		is($point->y->as_hex, $y->as_hex, "curve $curvename k $k y coordinate matches");
 	}
 }
+
+done_testing;

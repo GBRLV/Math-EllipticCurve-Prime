@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-use Test::More tests => 11 + 1;
+use Test::More;
 use Test::Warnings;
 
 use Math::BigInt try => 'GMP,FastCalc';
@@ -44,3 +44,5 @@ use Math::EllipticCurve::Prime::Point;
 		"0x7775510db8ed040293d9ac69f7430dbba7dade63ce982299e04b79d227873d1",
 		"doubled point y coordinate matches");
 }
+
+done_testing;

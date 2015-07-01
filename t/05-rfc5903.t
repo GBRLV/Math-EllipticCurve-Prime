@@ -5,7 +5,7 @@ use FindBin;
 use warnings;
 use strict;
 
-use Test::More tests => 6 * 3 + 1;
+use Test::More;
 use Test::Warnings;
 
 use Math::BigInt try => 'GMP,FastCalc';
@@ -70,3 +70,5 @@ foreach my $curvename (sort keys %$tests) {
 	cmp_ok($ir->x, '==', $ri->x, "x-coordinates match");
 	cmp_ok($ir->y, '==', $ri->y, "y-coordinate match");
 }
+
+done_testing;
