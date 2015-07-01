@@ -6,7 +6,7 @@ use warnings;
 use strict;
 
 use Test::More tests => 6 * 3 + 1;
-use Test::NoWarnings;
+use Test::Warnings;
 
 use Math::BigInt try => 'GMP,FastCalc';
 use Math::EllipticCurve::Prime;
