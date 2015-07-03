@@ -271,7 +271,7 @@ sub bdbl {
 
 	die "Can't multiply or double a point without a curve"
 		unless defined $self->{curve};
-	
+
 	my $p = $self->curve->p;
 	my $lambda = $self->x->copy->bmodpow(2, $p);
 	$lambda->bmul(3);

@@ -27,7 +27,7 @@ use Math::EllipticCurve::Prime::Point;
 {
 	my $curve = Math::EllipticCurve::Prime->new(name => "secp256r1");
 	die unless $curve;
-	
+
 	my $g = $curve->g->copy;
 	is($g->x->as_hex,
 		"0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296",
